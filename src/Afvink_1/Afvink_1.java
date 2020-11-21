@@ -40,7 +40,7 @@ public class Afvink_1 {
     public static class Randomizer {
         public int getGetal() {
             Random random = new Random();
-            int getal = random.nextInt(10000);
+            int getal = random.nextInt(1000000);
             return getal;
         }
     }
