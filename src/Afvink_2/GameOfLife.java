@@ -18,6 +18,10 @@ public class GameOfLife extends JFrame implements ActionListener {
     }
 
     private void createGui() {
+        /**
+        De java GUI wordt gemaakt. Er is een start button om het spel
+         te starten en een exit button om de GUI af te sluiten.
+         */
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         Container window = getContentPane();
         window.setLayout(new FlowLayout());
@@ -39,6 +43,10 @@ public class GameOfLife extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        /**
+         * De vakjes worden weergegeven en er wordt gezorgd dat het
+         * algoritme 50 keer wordt herhaald.
+         */
         NextGeneration nextgen = new NextGeneration();
         Graphics tekenveld = paper.getGraphics();
         table[0][0] = 1;
@@ -57,13 +65,11 @@ public class GameOfLife extends JFrame implements ActionListener {
         table[5][6] = 1;
         table[3][7] = 1;
 
-
         table[0][7] = 1;
         table[0][9] = 1;
         table[1][8] = 1;
         table[2][7] = 1;
         table[2][9] = 1;
-
 
         switch (e.getActionCommand()) {
             case "Start" -> {
@@ -91,14 +97,19 @@ public class GameOfLife extends JFrame implements ActionListener {
             case "Exit" -> {
 //                System.out.println("Exit");
                 this.dispose();
-
-
             }
         }
     }
 
-    public class NextGeneration {
-
+    public static class NextGeneration {
+        /**
+         * Hier wordt ervoor gezorgd dat de juiste cellen blijven
+         * leven.
+         * @param table: hier wordt bepaald welke cellen blijven
+         *             leven en welke als het ware dood gaan.
+         * @return next_table: deze tabel wordt gebruikt in
+         * ActionPerformed en deze wordt vervolgens 50 keer herhaald.
+         */
         public int[][] GetNext(int[][] table) {
             int[][] next_table = new int[10][10];
             int s = 0;
@@ -131,7 +142,6 @@ public class GameOfLife extends JFrame implements ActionListener {
                                 table[i - 1][k] + table[i + 1][k] +
                                 table[i - 1][k + 1] + table[i][k + 1] + table[i + 1][k + 1];
                     }
-
                     if (table[i][k] == 1) {
                         if (s == 2 || s == 3) {
                             next_table[i][k] = 1;
@@ -142,10 +152,8 @@ public class GameOfLife extends JFrame implements ActionListener {
                         if (s == 3) {
                             next_table[i][k] = 1;
                         }
-
                     }
                 }
-
             }
             return next_table;
         }
