@@ -31,7 +31,7 @@ public class Overlap_Graphs {
             for (String y : seq) {
                 if (!x.equals(y)) {
                     if (x.substring(0, 3).equals(y.substring(4))) {
-                        System.out.println(head.get(seq.indexOf(y)) + " --> " + head.get(seq.indexOf(x)));
+                        System.out.println(head.get(seq.indexOf(y)) + " " + head.get(seq.indexOf(x)));
 
                     }
 
